@@ -35,8 +35,13 @@ const store = new Vuex.Store({
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    display: true,
+                    position : 'right' 
+                    },
                 title: {
-                    text: "2020",
+                    text: "Objets perdus",
                     display: true
                 },
             }

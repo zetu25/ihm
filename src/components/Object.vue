@@ -1,6 +1,9 @@
 <template>
   <v-col>
-    <canvas id="doughnut-chart"></canvas>
+    <div class="chart-container">
+       <canvas id="doughnut-chart"></canvas>
+    </div>
+    
   </v-col>
   <!-- <canvas class="fzefe" id="doughnut-chart"></canvas> -->
 </template>
@@ -37,4 +40,9 @@ export default {
 </script>
 
 <style>
+.chart-container {
+       width: 600px;
+       height:500px
+}
+
 </style>
