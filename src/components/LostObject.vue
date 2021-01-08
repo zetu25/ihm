@@ -9,14 +9,13 @@ import createChart from "../makechart";
 export default {
   name: "LostObject",
   methods: {
-    ...mapActions(["changeLostObjectData"]),
+    ...mapActions("lostDonut",["changeLostObjectData"]),
   },
   computed: {
-    ...mapGetters({ data: "getLostObjectData" }),
+    ...mapGetters("lostDonut",["getLostObjectData"]),
   },
   mounted() {
-    this.changeLostObjectData();
-    createChart("doughnutLostObjects-chart", this.data);
+    createChart("doughnutLostObjects-chart", this.getLostObjectData);
   },
 };
 </script>

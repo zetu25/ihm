@@ -3,20 +3,19 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import {  mapGetters, mapActions } from "vuex";
 import createChart from "../makechart";
 
 export default {
   name: "ReturnedObject",
   methods: {
-    ...mapActions(["changeReturnedObjectData"]),
+    ...mapActions("returnedDonut",["changeReturnedObjectData"]),
   },
   computed: {
-    ...mapGetters({ data: "getReturnedObjectData" }),
+    ...mapGetters("returnedDonut",[ "getReturnedObjectData" ]),
   },
   mounted() {
-    this.changeReturnedObjectData();
-    createChart("doughnutReturnedObjects-chart", this.data);
+    createChart("doughnutReturnedObjects-chart", this.getReturnedObjectData);
   },
 };
 </script>

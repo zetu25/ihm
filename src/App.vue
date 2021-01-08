@@ -31,12 +31,15 @@
 
     <v-main>
       <v-row>
-        <v-col>
+        <v-col cols="6">
           <returned-object></returned-object>
         </v-col>
-        <v-col>
+        <v-col cols="6">
           <lost-object></lost-object>
         </v-col>
+      </v-row>
+      <v-row>
+        <lost-object-per-month></lost-object-per-month>
       </v-row>
     </v-main>
   </v-app>
@@ -46,14 +49,17 @@
 import ReturnedObject from "./components/ReturnedObject.vue";
 import LostObject from "./components/LostObject.vue";
 import { mapActions } from "vuex";
+import LostObjectPerMonth from './components/LostObjectPerMonth.vue';
 export default {
   name: "App",
   methods: {
-    ...mapActions(["changeReturnedObjectData", "changeLostObjectData"]),
+    ...mapActions("returnedDonut",["changeReturnedObjectData"]),
+    ...mapActions("lostDonut",["changeLostObjectData"]),
   },
   components: {
     ReturnedObject,
     LostObject,
+    LostObjectPerMonth,
   },
   mounted() {
     this.changeReturnedObjectData();
