@@ -14,7 +14,7 @@ import axios from "axios";
 import LineChart from "./LineChart.vue";
 
 export default {
-  name: "LineChartContainer",
+  name: "LostLineTrainStation",
   components: { LineChart },
   data: () => {
     return {
@@ -75,8 +75,4 @@ export default {
 </script>
 
 <style>
-.container {
-       width: 500px;
-       height:500px
-}
 </style>

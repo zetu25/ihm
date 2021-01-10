@@ -1,36 +1,38 @@
-<template>
+<template >
   <v-app>
-    <v-app-bar app color="#003B93" dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
+    <v-app-bar app color="#BC5F43" dark>
+      <img src="./assets/Logo_SNCF.png" alt="Logo SNCF" width="150px" height="60px">
+      <v-spacer class="center">
+        
+                  Evolution et proportion des objets perdus et restitués en France 2020
+        
+      </v-spacer>
+      
       <v-btn href="https://github.com/zetu25/ihm" target="_blank" text>
         <span class="mr-2">Latest Release</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
 
-    <v-main>
+    <v-main class ="main">
       <v-row>
         <v-col cols="6">
           <returned-object></returned-object>
         </v-col>
+        
+        <v-col cols="6">
+          <returned-object-per-month></returned-object-per-month>
+          
+        </v-col>
+      </v-row>
+      <v-divider inset ></v-divider>
+      <v-row>
         <v-col cols="6">
           <lost-object></lost-object>
         </v-col>
-      </v-row>
-      <v-row>
-        <lost-object-per-month></lost-object-per-month>
+        <v-col cols="6">
+          <lost-object-per-month></lost-object-per-month>
+        </v-col>
       </v-row>
     </v-main>
   </v-app>
@@ -38,23 +40,26 @@
 
 <script>
 import ReturnedObject from "./components/ReturnedObject.vue";
+import ReturnedObjectPerMonth from "./components/ReturnedObjectPerMonth.vue";
 import LostObject from "./components/LostObject.vue";
-import { mapActions } from "vuex";
-import LostObjectPerMonth from './components/LostObjectPerMonth.vue';
+import LostObjectPerMonth from "./components/LostObjectPerMonth.vue";
+
+
 export default {
   name: "App",
-  methods: {
-    ...mapActions("returnedDonut",["changeReturnedObjectData"]),
-    ...mapActions("lostDonut",["changeLostObjectData"]),
-  },
   components: {
     ReturnedObject,
     LostObject,
     LostObjectPerMonth,
+    ReturnedObjectPerMonth,
   },
-  mounted() {
-    this.changeReturnedObjectData();
-    this.changeLostObjectData();
-  },
+
 };
+
 </script>
+<style >
+.main {
+  background-image: url('./assets/background.jpg');
+  background-size: cover;
+}
+</style>

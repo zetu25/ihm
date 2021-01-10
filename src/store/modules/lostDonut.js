@@ -1,8 +1,9 @@
 import axios from 'axios';
-//import hexToRgba from 'hex-to-rgba'; // COMMENTED TO USE RGB COLORS
-// import colorGradient from "../colors";
+import hexToRgba from 'hex-to-rgba';
+import colorGradient from "../colors";
 
 const state = () => ({
+    loaded:false,
     doughnutLostObjects: {
         type: 'doughnut',
         data: {
@@ -10,15 +11,15 @@ const state = () => ({
             labels: [],
             // Valeurs des objets trouvés et rendus
             datasets: [{
-                data: [14,13,12,11,10,9,8,7,6,5,4,3,2,1],
-                backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B", "#7FDBFF", "#B10DC9", "#FFDC00", "#001f3f", "#39CCCC", "#01FF70", "#85144b", "#F012BE", "#3D9970", "#111111", "#AAAAAA"],
-                weight: 2
+                data: [],
+                backgroundColor: [],
+                weight: 5
             }],
         },
         options: {
-            responsive: true,
+            responsive: false,
             title: {
-                text: "Déclarations de pertes en 2020 ",
+                text: "Objets perdus par gare en ",
                 display: true
             },
             legend: {
@@ -26,13 +27,17 @@ const state = () => ({
                 position: "bottom",
                 boxWidth: 5
             },
-            maintainAspectRatio: true
+            maintainAspectRatio: false
         }
     }
 })
 
 // getters
-const getters = { getLostObjectData: state => state.doughnutLostObjects }
+const getters = {
+    getLostObjectData: state => state.doughnutLostObjects.data,
+    getOptions: state => state.doughnutLostObjects.options,
+    getLoaded: state => state.loaded }
+
 
 // actions
 const actions = {
@@ -42,9 +47,8 @@ const actions = {
         var config = {
             method: "get",
             url:
-                "https://data.sncf.com/api/records/1.0/search/?dataset=objets-trouves-restitution&q=&facet=gc_obo_gare_origine_r_name&refine.date=" +
+                "https://data.sncf.com/api/records/1.0/search/?dataset=objets-trouves-gares&q=&rows=1&sort=date&facet=date&facet=gc_obo_gare_origine_r_name&apikey=2463d285a96d2c6c1739896874dbfec0b643d9ad37b51a5feda5b90a&refine.date=" +
                 this.state.year
-                
         };
 
         await axios(config)
@@ -59,7 +63,7 @@ const actions = {
             .catch(function (error) {
                 console.log(error);
             });
-    }
+    },
 }
 
 // mutations
@@ -68,11 +72,12 @@ const mutations = {
         state.doughnutLostObjects.data.datasets[0].data = newData[0];
         state.doughnutLostObjects.data.labels = newData[1];
         state.doughnutLostObjects.options.title.text = "Objets perdus selon la gare en " + this.state.year;
-        // COMMENTED TO USE COLORS
-        //colorGradient.setMidpoint(newData[0].length);
-        //state.doughnutLostObjects.data.datasets[0].backgroundColor = colorGradient.getArray().map(color => hexToRgba(color));
-    
-        }
+        colorGradient.setMidpoint(newData[0].length);
+        state.doughnutLostObjects.data.datasets[0].backgroundColor = colorGradient.getArray().map(color => hexToRgba(color));
+    },
+    setLoaded(state, loaded) {
+        state.loaded = loaded;
+    }
 }
 
 const lostDonut = {

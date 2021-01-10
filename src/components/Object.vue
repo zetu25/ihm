@@ -41,7 +41,7 @@ export default {
 
 <style>
 .chart-container {
-       width: 600px;
+       width: 500px;
        height:500px
 }
 

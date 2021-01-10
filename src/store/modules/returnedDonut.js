@@ -1,32 +1,34 @@
 import axios from 'axios';
-//import hexToRgba from 'hex-to-rgba';
-//import colorGradient from "../colors";
+// import hexToRgba from 'hex-to-rgba';
+// import colorGradient from "../colors";
+
+
 
 const state = () => ({
+    loaded: false,
     doughnutReturnedObjects: {
-        type: 'doughnut',
         data: {
             // Nom des gares
             labels: [],
             // Valeurs des objets trouvés et rendus
             datasets: [{
-                data: [14,13,12,11,10,9,8,7,6,5,4,3,2,1],
-                backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B", "#7FDBFF", "#B10DC9", "#FFDC00", "#001f3f", "#39CCCC", "#01FF70", "#85144b", "#F012BE", "#3D9970", "#111111", "#AAAAAA"],
+                data: [],
+                backgroundColor: [],
                 weight: 5
             }],
         },
         options: {
-            responsive: true,
+            responsive: false,
             aspectRatio: 2,
             title: {
-                text: "Objets restitués en 2020",
+                text: "Objets restitués par gare en ",
                 display: true,
 
             },
             legend: {
                 display: false,
-                boxWidth: 10,
-                position: "right"
+                boxWidth: 100,
+                position: "bottom"
             },
             maintainAspectRatio: true
         }
@@ -34,7 +36,11 @@ const state = () => ({
 })
 
 // getters
-const getters = { getReturnedObjectData: state => state.doughnutReturnedObjects}
+const getters = {
+    getReturnedObjectData: state => state.doughnutReturnedObjects.data,
+    getOptions: state => state.doughnutReturnedObjects.options,
+    getLoaded: state => state.loaded
+}
 
 // actions
 const actions = {
@@ -45,7 +51,7 @@ const actions = {
         var config = {
             method: "get",
             url:
-                "https://data.sncf.com/api/records/1.0/search/?dataset=objets-trouves-gares&q=&sort=date&facet=date&facet=gc_obo_gare_origine_r_name&refine.date=" +
+                "https://data.sncf.com/api/records/1.0/search/?apikey=2463d285a96d2c6c1739896874dbfec0b643d9ad37b51a5feda5b90a&dataset=objets-trouves-restitution&q=&rows=0&facet=gc_obo_gare_origine_r_name&facet=gc_obo_date_heure_restitution_c&refine.gc_obo_date_heure_restitution_c=" +
                 this.state.year
         };
 
@@ -62,19 +68,19 @@ const actions = {
                 console.log(error);
             });
         commit("changeReturnedObjectData", newData)
-
-    }
+    },
 }
 
 // mutations
 const mutations = {
-    changeReturnedObjectData(state, newData) {
-        state.doughnutReturnedObjects.data.datasets[0].data = newData[0];
-        state.doughnutReturnedObjects.data.labels = newData[1];
-        state.doughnutReturnedObjects.options.title.text = "Objets trouvés et restitués selon la gare en " + this.state.year;
-        //colorGradient.setMidpoint(newData[0].length);
-        //state.doughnutReturnedObjects.data.datasets[0].backgroundColor = colorGradient.getArray().map(color => hexToRgba(color));
-    }
+    // changeReturnedObjectData(state, newData) {
+    //     state.doughnutReturnedObjects.data.datasets[0].data = newData[0];
+    //     state.doughnutReturnedObjects.data.labels = newData[1];
+    //     state.doughnutReturnedObjects.options.title.text = "Objets trouvés et restitués selon la gare en " + this.state.year;
+    //     colorGradient.setMidpoint(newData[0].length);
+    //     state.doughnutReturnedObjects.data.datasets[0].backgroundColor = colorGradient.getArray().map(color => hexToRgba(color));
+    // },
+
 }
 
 const returnedObject = {
