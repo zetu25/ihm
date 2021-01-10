@@ -49,7 +49,7 @@ export default {
     ...mapActions(["setLoaded"]),
   },
   computed: {
-    ...mapGetters("lostPerMonth", ["getOptions"]),
+    ...mapGetters("lostLineTrainStation", ["getOptions"]),
     ...mapGetters(["getYear","getLoaded"]),
 
     setTitle() {

@@ -23,7 +23,7 @@ const state = () => ({
                 display: true
             },
             legend: {
-                display: true,
+                display: false,
                 position: "bottom",
                 boxWidth: 5
             },

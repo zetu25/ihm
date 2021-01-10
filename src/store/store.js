@@ -4,6 +4,7 @@ import returnedDonut from './modules/returnedDonut.js'
 import lostDonut from './modules/lostDonut.js'
 import returnedPerMonth from './modules/returnedPerMonth.js'
 import lostPerMonth from './modules/lostPerMonth.js'
+import lostLineTrainStation from './modules/lostLineTrainStation.js'
 
 
 Vue.use(Vuex)
@@ -13,7 +14,8 @@ export default new Vuex.Store({
         returnedDonut,
         returnedPerMonth,
         lostDonut,
-        lostPerMonth
+        lostPerMonth,
+        lostLineTrainStation
     },
     state: {
         year: "2020",

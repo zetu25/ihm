@@ -14,12 +14,18 @@
         <v-col cols="6">
           <returned-object></returned-object>
         </v-col>
-        
         <v-col cols="6">
           <lost-object></lost-object>
         </v-col>
       </v-row>
       <v-divider inset ></v-divider>
+      <v-row>
+        <v-col cols="6">
+        </v-col>
+        <v-col cols="6">
+          <lost-line-train-station></lost-line-train-station>
+        </v-col>      
+      </v-row>
       <v-row>
         <v-col cols="6">
           <returned-object-per-month></returned-object-per-month>
@@ -28,6 +34,7 @@
           <lost-object-per-month></lost-object-per-month>
         </v-col>
       </v-row>
+      
     </v-main>
   </v-app>
 </template>
@@ -37,7 +44,7 @@ import ReturnedObject from "./components/ReturnedObject.vue";
 import ReturnedObjectPerMonth from "./components/ReturnedObjectPerMonth.vue";
 import LostObject from "./components/LostObject.vue";
 import LostObjectPerMonth from "./components/LostObjectPerMonth.vue";
-
+import LostLineTrainStation from "./components/LostLineTrainStation.vue";
 
 export default {
   name: "App",
@@ -46,7 +53,7 @@ export default {
     LostObject,
     LostObjectPerMonth,
     ReturnedObjectPerMonth,
+    LostLineTrainStation
   },
-
 };
 </script>
