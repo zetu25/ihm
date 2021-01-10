@@ -2,6 +2,8 @@ import axios from 'axios';
 import hexToRgba from 'hex-to-rgba';
 import colorGradient from "../colors";
 
+
+
 const state = () => ({
     doughnutReturnedObjects: {
         type: 'doughnut',

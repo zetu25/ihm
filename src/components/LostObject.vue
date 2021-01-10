@@ -12,9 +12,9 @@ export default {
     ...mapActions("lostDonut",["changeLostObjectData"]),
   },
   computed: {
-    ...mapGetters("lostDonut",["getLostObjectData"]),
+    ...mapGetters("lostDonut",["getLostObjectData","getLoad"]),
   },
-  mounted() {
+  async mounted() {
     createChart("doughnutLostObjects-chart", this.getLostObjectData);
   },
 };

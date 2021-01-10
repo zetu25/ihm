@@ -1,19 +1,62 @@
-import planetChartData from "../chart-data";
+const state = () => ({
+    loaded: false,
+    lineLostPerMonth: {
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Objets perdus par mois en ',
+                position: 'bottom'
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Mois'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Objets perdus'
+                    }
+                }]
+            }
+        }
+    }
+})
+
+const getters = {
+
+    getOptions: state => state.lineLostPerMonth.options,
+    getLoaded: state => state.loaded
+}
+
+const mutations = {
+
+    setLoaded(state, loaded) {
+        state.loaded = loaded;
+    }
+}
+
+const actions = {
+
+    setLoaded({ commit }) {
+        commit("setLoaded", true);
+    }
+
+}
+
 
 const lostPerMonth = {
     namespaced: true,
-    state: () => ({
-        lineLostPerMonth: planetChartData
-    }),
-    mutations: {
-
-    },
-    actions: {
-
-    },
-    getters: {
-        getLostObjectData: state => state.lineLostPerMonth
-    }
+    state,
+    getters,
+    actions,
+    mutations
 }
+
 
 export default lostPerMonth;

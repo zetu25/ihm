@@ -1,21 +1,73 @@
 <template>
-  <canvas id="lineLostObject-chart"></canvas>
+  <div class="container">
+    <line-chart
+      v-if="this.getLoaded"
+      :chartdata="chartdata"
+      :options="this.setTitle"
+    />
+  </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import createChart from "../makechart";
+import axios from "axios";
+import LineChart from "./Chart.vue";
 
 export default {
-  name: "LostObjectPerMonth",
+  name: "LineChartContainer",
+  components: { LineChart },
+  data: () => {
+    return {
+      chartdata: {
+        labels: [
+          "Janvier",
+          "Février",
+          "Mars",
+          "Avril",
+          "Mai",
+          "Juin",
+          "Juillet",
+          "Août",
+          "Septembre",
+          "Octobre",
+          "Novembre",
+          "Décembre",
+        ],
+        datasets: [
+          {
+            label: "Objets perdus",
+            backgroundColor: "rgb(255, 159, 64)",
+            borderColor: "rgb(255, 159, 64)",
+            data: [],
+            fill: false,
+          },
+        ],
+      },
+    };
+  },
   methods: {
-    ...mapActions("lostPerMonth",["changeLostObjectData"]),
+    ...mapActions("lostPerMonth", ["setLoaded"]),
   },
   computed: {
-    ...mapGetters("lostPerMonth",["getLostObjectData"]),
+    ...mapGetters("lostPerMonth", ["getOptions", "getLoaded"]),
+    setTitle() {
+      let options = this.getOptions;
+      options.title.text = options.title.text + this.$store.state.year;
+      return options;
+    },
   },
-  mounted() {
-    createChart("lineLostObject-chart", this.getLostObjectData);
+  async created() {
+    const response = await axios(
+      "https://data.sncf.com/api/records/1.0/search/?dataset=objets-trouves-gares&q=" +
+        "&rows=0&sort=date&facet=date" +
+        "&apikey=2463d285a96d2c6c1739896874dbfec0b643d9ad37b51a5feda5b90a" +
+        "&refine.date=" +
+        this.$store.state.year
+    );
+    response.data.facet_groups[0].facets[0].facets.forEach((element) => {
+      this.chartdata.datasets[0].data.push(element.count);
+    });
+    this.setLoaded();
   },
 };
 </script>
