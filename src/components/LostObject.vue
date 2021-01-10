@@ -48,10 +48,10 @@ export default {
   },
   async created() {
     const response = await axios(
-      "https://data.sncf.com/api/records/1.0/search/?dataset=objets-trouves-gares" +
-        "&q=&rows=1&sort=date&facet=date&facet=gc_obo_gare_origine_r_name" +
-        "&apikey=2463d285a96d2c6c1739896874dbfec0b643d9ad37b51a5feda5b90a&refine.date=" +
-        this.getYear
+      "https://data.sncf.com/api/records/1.0/search/?dataset=objets-trouves-gares&q="+
+      "&rows=25&sort=date&facet=date&facet=gc_obo_gare_origine_r_name"+
+      "&facet=gc_obo_type_c&apikey=2463d285a96d2c6c1739896874dbfec0b643d9ad37b51a5feda5b90a"+
+      "&refine.date=" + this.getYear
     );
 
     response.data.facet_groups[1].facets.forEach((element) => {

@@ -6,6 +6,7 @@ const state = () => ({
     loaded: false,
     doughnutLostObjects: {
         type: 'doughnut',
+        defaultFontColor: "#FFFFFF",
         data: {
             // Nom des gares
             labels: [],
@@ -25,7 +26,7 @@ const state = () => ({
             legend: {
                 display: false,
                 position: "bottom",
-                boxWidth: 5
+                boxWidth: 5,
             },
             maintainAspectRatio: true
         }

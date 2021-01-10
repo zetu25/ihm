@@ -18,7 +18,7 @@
       </v-btn>
     </v-app-bar>
 
-    <v-main>
+    <v-main class="main">
       <!-- Objets retrounés et rendus -->
       <v-row justify="center">
         <h2>Objets retrouvés et rendus à leurs propriétaires</h2>
@@ -44,7 +44,7 @@
       </v-row>
       <v-row justify="center">
         <v-col cols="auto">
-          <lost-bar-chart></lost-bar-chart>
+          <lost-object-per-month></lost-object-per-month>
         </v-col>
         <v-divider vertical></v-divider>
         <v-col cols="auto">
@@ -52,7 +52,39 @@
         </v-col>
         <v-divider vertical></v-divider>
         <v-col cols="auto">
-          <lost-object-per-month></lost-object-per-month>
+          <lost-bar-chart></lost-bar-chart>
+        </v-col>
+      </v-row>
+
+      <v-spacer></v-spacer>
+      <!-- <v-row>
+        <v-col cols="6">
+          <v-row justify="center">
+            <h2>Objets trouvés et restitués</h2>
+          </v-row>
+          <returned-board></returned-board>
+        </v-col>
+        <v-col cols="6">
+          <v-row justify="center">
+            <h2>Déclaration de perte</h2>
+          </v-row>
+          <lost-board></lost-board>
+        </v-col>
+      </v-row> -->
+      <v-row justify="center">
+        <h2>Objets trouvés et restitués</h2>
+      </v-row>
+      <v-row justify="center">
+        <v-col cols="8">
+          <returned-board></returned-board>
+        </v-col>
+      </v-row>
+      <v-row justify="center">
+        <h2>Déclaration de pertes</h2>
+      </v-row>
+      <v-row justify="center">
+        <v-col cols="8">
+          <lost-board></lost-board>
         </v-col>
       </v-row>
     </v-main>
@@ -66,22 +98,28 @@ import LostObject from "./components/LostObject.vue";
 import LostObjectPerMonth from "./components/LostObjectPerMonth.vue";
 import LostBarChart from "./components/LostBarChart.vue";
 import ReturnedBarChart from "./components/ReturnedBarChart.vue";
+import ReturnedBoard from "./components/ReturnedBoard.vue";
+import LostBoard from "./components/LostBoard.vue";
 
 export default {
   name: "App",
   components: {
-    ReturnedObject,
     LostObject,
     LostObjectPerMonth,
-    ReturnedObjectPerMonth,
     LostBarChart,
+    LostBoard,
+    ReturnedObject,
+    ReturnedObjectPerMonth,
     ReturnedBarChart,
+    ReturnedBoard,
   },
 };
 </script>
 <style >
 .main {
-  background-image: url("./assets/background.jpg");
-  background-size: cover;
+  /* background-image: url("./assets/background1.jpg"); */
+  /* background-size: cover; */
+  background-color: #bbf0f3;
+  background-image: linear-gradient(315deg, #f6d285 0%, #bbf0f3 74%);
 }
 </style>
