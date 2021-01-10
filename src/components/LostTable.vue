@@ -9,19 +9,19 @@
         </tr>
         <tr v-for="item in list" v-bind:key="item.id">
             <td>
-                {{ TODO }}
+                {{ item.TODO }}
             </td>
             <td>
-                {{ TODO }}
+                {{ item.TODO }}
             </td>
             <td>
-                {{ TODO }}
+                {{ item.TODO }}
             </td>
             <td>
-                {{ TODO }}
+                {{ item.TODO }}
             </td>
             <td>
-                {{ TODO }}
+                {{ item.TODO }}
             </td>
         </tr>
     </table>
