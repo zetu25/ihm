@@ -1,6 +1,16 @@
 <template>
   <v-app>
-    <v-app-bar app color="#003B93" dark>      
+    <v-app-bar app color="#003B93" dark>
+      <img
+        src="./assets/Logo_SNCF.png"
+        alt="Logo SNCF"
+        width="170px"
+        height="60px"
+      />
+      <v-spacer></v-spacer>
+      <h3>
+        Evolution et proportion des objets perdus et restitués en France 2020
+      </h3>
       <v-spacer></v-spacer>
       <v-btn href="https://github.com/zetu25/ihm" target="_blank" text>
         <span class="mr-2">Latest Release</span>
@@ -11,7 +21,7 @@
     <v-main>
       <!-- Objets retrounés et rendus -->
       <v-row justify="center">
-        <h2> Objets retrouvés et rendus à leurs propriétaires</h2>
+        <h2>Objets retrouvés et rendus à leurs propriétaires</h2>
       </v-row>
       <v-row justify="center">
         <v-col cols="auto">
@@ -26,11 +36,11 @@
           <returned-bar-chart></returned-bar-chart>
         </v-col>
       </v-row>
-      
+
       <v-spacer></v-spacer>
       <!-- Objets perdus -->
       <v-row justify="center">
-        <h2> Objets perdus</h2>
+        <h2>Objets perdus</h2>
       </v-row>
       <v-row justify="center">
         <v-col cols="auto">
@@ -69,3 +79,9 @@ export default {
   },
 };
 </script>
+<style >
+.main {
+  background-image: url("./assets/background.jpg");
+  background-size: cover;
+}
+</style>
