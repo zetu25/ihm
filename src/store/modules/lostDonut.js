@@ -3,9 +3,10 @@ import hexToRgba from 'hex-to-rgba';
 import colorGradient from "../colors";
 
 const state = () => ({
-    loaded:false,
+    loaded: false,
     doughnutLostObjects: {
         type: 'doughnut',
+        defaultFontColor: "#FFFFFF",
         data: {
             // Nom des gares
             labels: [],
@@ -17,17 +18,17 @@ const state = () => ({
             }],
         },
         options: {
-            responsive: false,
+            responsive: true,
             title: {
-                text: "Objets perdus par gare en ",
+                text: "Objets perdus en ",
                 display: true
             },
             legend: {
                 display: false,
                 position: "bottom",
-                boxWidth: 5
+                boxWidth: 5,
             },
-            maintainAspectRatio: false
+            maintainAspectRatio: true
         }
     }
 })
@@ -36,7 +37,8 @@ const state = () => ({
 const getters = {
     getLostObjectData: state => state.doughnutLostObjects.data,
     getOptions: state => state.doughnutLostObjects.options,
-    getLoaded: state => state.loaded }
+    getLoaded: state => state.loaded
+}
 
 
 // actions
@@ -64,6 +66,9 @@ const actions = {
                 console.log(error);
             });
     },
+    setLoaded({ commit }) {
+        commit("setLoaded", true);
+    }
 }
 
 // mutations

@@ -46,11 +46,11 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setLoaded"]),
+    ...mapActions("lostPerMonth",["setLoaded"]),
   },
   computed: {
-    ...mapGetters("lostPerMonth", ["getOptions"]),
-    ...mapGetters(["getYear","getLoaded"]),
+    ...mapGetters("lostPerMonth", ["getOptions","getLoaded"]),
+    ...mapGetters(["getYear"]),
 
     setTitle() {
       let options = this.getOptions;
@@ -69,14 +69,10 @@ export default {
     response.data.facet_groups[0].facets[0].facets.forEach((element) => {
       this.chartdata.datasets[0].data.push(element.count);
     });
-    
+    this.setLoaded();
   },
 };
 </script>
 
 <style>
-.container {
-       width: 500px;
-       height:500px
-}
 </style>
