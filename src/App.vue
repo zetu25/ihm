@@ -34,6 +34,11 @@
           <lost-object-per-month></lost-object-per-month>
         </v-col>
       </v-row>
+      <v-row>
+        <v-col cols="1">
+          <lost-table></lost-table>
+        </v-col>
+      </v-row>
     </v-main>
   </v-app>
 </template>
@@ -43,6 +48,7 @@ import ReturnedObject from "./components/ReturnedObject.vue";
 import ReturnedObjectPerMonth from "./components/ReturnedObjectPerMonth.vue";
 import LostObject from "./components/LostObject.vue";
 import LostObjectPerMonth from "./components/LostObjectPerMonth.vue";
+import LostTable from "./components/LostTable.vue";
 
 
 export default {
@@ -52,6 +58,7 @@ export default {
     LostObject,
     LostObjectPerMonth,
     ReturnedObjectPerMonth,
+    LostTable,
   },
 
 };
