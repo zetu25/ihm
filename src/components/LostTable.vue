@@ -7,7 +7,7 @@
             <th>Nature d'objets</th>
             <th>Gare</th>
         </tr>
-        <tr v-for="item in list" v-bind:key="item.id">
+        <tr v-for="item in list" v-bind:key="item.ID">
             <td>
                 {{ item.TODO }}
             </td>
@@ -22,6 +22,7 @@
             </td>
             <td>
                 {{ item.TODO }}
+
             </td>
         </tr>
     </table>
