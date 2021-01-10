@@ -1,5 +1,30 @@
 <template>
-    <h1>LostTable</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Type d'objets</th>
+            <th>Nature d'objets</th>
+            <th>Gare</th>
+        </tr>
+        <tr ng-repeat="region in regions">
+            <td>
+                {{ TODO }}
+            </td>
+            <td>
+                {{ TODO }}
+            </td>
+            <td>
+                {{ TODO }}
+            </td>
+            <td>
+                {{ TODO }}
+            </td>
+            <td>
+                {{ TODO }}
+            </td>
+        </tr>
+    </table>
 
 </template>
 
