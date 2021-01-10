@@ -7,7 +7,7 @@
             <th>Nature d'objets</th>
             <th>Gare</th>
         </tr>
-        <tr ng-repeat="region in regions">
+        <tr v-for="item in list" v-bind:key="item.id">
             <td>
                 {{ TODO }}
             </td>
