@@ -1,13 +1,12 @@
 <template >
   <v-app>
-    <v-app-bar app color="#BC5F43" dark>
-      <img src="./assets/Logo_SNCF.png" alt="Logo SNCF" width="150px" height="60px">
-      <v-spacer class="center">
-        
-                  Evolution et proportion des objets perdus et restitués en France 2020
-        
-      </v-spacer>
-      
+    <v-app-bar app color="#003B93" dark>
+      <img src="./assets/Logo_SNCF.png" alt="Logo SNCF" width="170px" height="60px">
+      <v-spacer></v-spacer>
+      <h3>
+        Evolution et proportion des objets perdus et restitués en France 2020
+      </h3>
+      <v-spacer></v-spacer>
       <v-btn href="https://github.com/zetu25/ihm" target="_blank" text>
         <span class="mr-2">Latest Release</span>
         <v-icon>mdi-open-in-new</v-icon>
