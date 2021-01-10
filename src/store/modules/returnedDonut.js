@@ -69,6 +69,9 @@ const actions = {
             });
         commit("changeReturnedObjectData", newData)
     },
+    setLoaded({ commit }) {
+        commit("setLoaded", true);
+    }
 }
 
 // mutations
@@ -80,7 +83,9 @@ const mutations = {
     //     colorGradient.setMidpoint(newData[0].length);
     //     state.doughnutReturnedObjects.data.datasets[0].backgroundColor = colorGradient.getArray().map(color => hexToRgba(color));
     // },
-
+    setLoaded(state, loaded) {
+        state.loaded = loaded;
+    }
 }
 
 const returnedObject = {

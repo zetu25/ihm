@@ -1,6 +1,6 @@
 <template>
   <v-container class="container">
-    <doughnut-chart
+    <bar-chart
       v-if="this.getLoaded"
       :chartdata="chartdata"
       :options="this.setTitle"
@@ -9,40 +9,41 @@
 </template>
 
 <script>
+import BarChart from "./BarChart.vue";
 import { mapGetters, mapActions } from "vuex";
-import DoughnutChart from "./Doughnut.vue";
 import axios from "axios";
 import hexToRgba from "hex-to-rgba";
 import colorGradient from "../store/colors";
 
 export default {
-  name: "LostObject",
-  components: { DoughnutChart },
-  data() {
-    return {
-      chartdata: {
-        // Nom des gares
-        labels: [],
-        // Valeurs des objets trouvés et rendus
-        datasets: [
-          {
-            data: [],
-            backgroundColor: [],
-            weight: 5,
-          },
-        ],
-      },
-    };
-  },
+  name: "LostBarChart",
+  components: { BarChart },
+  data: () => ({
+    loaded: false,
+    chartdata: {
+      labels: [],
+      datasets: [
+        {
+          label: "Nombre d'objets perdus",
+          data: [],
+          fill: false,
+          backgroundColor: [],
+        //   borderColor: [],
+          borderWidth: 1,
+        },
+      ],
+    },
+  }),
   methods: {
-    ...mapActions("lostDonut",["setLoaded"]),
+    ...mapActions("lostBar", ["setLoaded"]),
   },
   computed: {
-    ...mapGetters("lostDonut", ["getOptions","getLoaded"]),
+    ...mapGetters("lostBar", ["getOptions", "getLoaded"]),
     ...mapGetters(["getYear"]),
+
     setTitle() {
       let options = this.getOptions;
-      options.title.text = options.title.text + this.$store.state.year;
+      options.title.text = options.title.text + this.getYear;
       return options;
     },
   },
@@ -67,9 +68,7 @@ export default {
       });
 
     this.setLoaded();
+    
   },
 };
 </script>
-
-<style>
-</style>

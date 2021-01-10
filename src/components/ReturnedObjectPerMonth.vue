@@ -46,11 +46,11 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setLoaded"]),
+    ...mapActions("returnedPerMonth",["setLoaded"]),
   },
   computed: {
-    ...mapGetters("returnedPerMonth", ["getOptions"]),
-    ...mapGetters(["getYear","getLoaded"]),
+    ...mapGetters("returnedPerMonth", ["getOptions","getLoaded"]),
+    ...mapGetters(["getYear"]),
     setTitle() {
       let options = this.getOptions;
       options.title.text = options.title.text + this.getYear;
@@ -68,6 +68,7 @@ export default {
     response.data.facet_groups[0].facets[0].facets.forEach((element) => {
       this.chartdata.datasets[0].data.push(element.count);
     });
+    this.setLoaded();
     
   },
 };

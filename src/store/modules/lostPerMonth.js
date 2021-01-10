@@ -6,7 +6,7 @@ const state = () => ({
             title: {
                 display: true,
                 text: 'Objets perdus par mois en ',
-                position: 'bottom'
+                position: 'top'
             },
             scales: {
                 xAxes: [{
@@ -35,11 +35,15 @@ const getters = {
 }
 
 const mutations = {
-
+    setLoaded(state, loaded) {
+        state.loaded = loaded;
+    }
 }
 
 const actions = {
-
+    setLoaded({ commit }) {
+        commit("setLoaded", true);
+    }
 }
 
 

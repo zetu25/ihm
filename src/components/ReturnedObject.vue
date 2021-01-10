@@ -35,11 +35,11 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setLoaded"]),
+    ...mapActions("returnedDonut",["setLoaded"]),
   },
   computed: {
-    ...mapGetters("returnedDonut", ["getOptions"]),
-    ...mapGetters(["getYear", "getLoaded"]),
+    ...mapGetters("returnedDonut", ["getOptions","getLoaded"]),
+    ...mapGetters(["getYear"]),
     setTitle() {
       let options = this.getOptions;
       options.title.text = options.title.text + this.$store.state.year;
@@ -67,7 +67,8 @@ export default {
       .forEach((element) => {
         this.chartdata.datasets[0].backgroundColor.push(element);
       });
-  },
+    this.setLoaded();
+  }
 };
 </script>
 

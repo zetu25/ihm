@@ -3,7 +3,7 @@ import hexToRgba from 'hex-to-rgba';
 import colorGradient from "../colors";
 
 const state = () => ({
-    loaded:false,
+    loaded: false,
     doughnutLostObjects: {
         type: 'doughnut',
         data: {
@@ -36,7 +36,8 @@ const state = () => ({
 const getters = {
     getLostObjectData: state => state.doughnutLostObjects.data,
     getOptions: state => state.doughnutLostObjects.options,
-    getLoaded: state => state.loaded }
+    getLoaded: state => state.loaded
+}
 
 
 // actions
@@ -64,6 +65,9 @@ const actions = {
                 console.log(error);
             });
     },
+    setLoaded({ commit }) {
+        commit("setLoaded", true);
+    }
 }
 
 // mutations
