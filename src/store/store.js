@@ -17,5 +17,20 @@ export default new Vuex.Store({
     },
     state: {
         year: "2020",
+        loaded: false,
+    },
+    getters: {
+        getYear : state => state.year,
+        getLoaded : state => state.loaded
+    },
+    mutations: {
+        setLoaded(state, loaded) {
+            state.loaded = loaded;
+        }
+    },
+    actions:{
+        setLoaded({ commit }) {
+            commit("setLoaded", true);
+        }
     }
 })

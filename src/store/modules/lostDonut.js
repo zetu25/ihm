@@ -3,6 +3,7 @@ import hexToRgba from 'hex-to-rgba';
 import colorGradient from "../colors";
 
 const state = () => ({
+    loaded:false,
     doughnutLostObjects: {
         type: 'doughnut',
         data: {
@@ -18,11 +19,11 @@ const state = () => ({
         options: {
             responsive: true,
             title: {
-                text: "",
+                text: "Objets perdus en ",
                 display: true
             },
             legend: {
-                display: false,
+                display: true,
                 position: "bottom",
                 boxWidth: 5
             },
@@ -32,7 +33,11 @@ const state = () => ({
 })
 
 // getters
-const getters = { getLostObjectData: state => state.doughnutLostObjects }
+const getters = {
+    getLostObjectData: state => state.doughnutLostObjects.data,
+    getOptions: state => state.doughnutLostObjects.options,
+    getLoaded: state => state.loaded }
+
 
 // actions
 const actions = {
@@ -58,7 +63,7 @@ const actions = {
             .catch(function (error) {
                 console.log(error);
             });
-    }
+    },
 }
 
 // mutations
@@ -69,6 +74,9 @@ const mutations = {
         state.doughnutLostObjects.options.title.text = "Objets perdus selon la gare en " + this.state.year;
         colorGradient.setMidpoint(newData[0].length);
         state.doughnutLostObjects.data.datasets[0].backgroundColor = colorGradient.getArray().map(color => hexToRgba(color));
+    },
+    setLoaded(state, loaded) {
+        state.loaded = loaded;
     }
 }
 

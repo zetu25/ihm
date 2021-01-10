@@ -37,30 +37,16 @@ import ReturnedObject from "./components/ReturnedObject.vue";
 import ReturnedObjectPerMonth from "./components/ReturnedObjectPerMonth.vue";
 import LostObject from "./components/LostObject.vue";
 import LostObjectPerMonth from "./components/LostObjectPerMonth.vue";
-import { mapActions, mapGetters } from "vuex";
+
 
 export default {
   name: "App",
-  methods: {
-    ...mapActions([
-      "returnedDonut/changeReturnedObjectData",
-      "lostDonut/changeLostObjectData",
-      "returnedPerMonth/changeReturnedObjectData",
-    ]),
-  },
   components: {
     ReturnedObject,
     LostObject,
     LostObjectPerMonth,
     ReturnedObjectPerMonth,
   },
-  computed: {
-    ...mapGetters("returnedDonut", ["getReturnedObjectData"]),
-  },
-  async created() {
-    this["returnedDonut/changeReturnedObjectData"]();
-    this["lostDonut/changeLostObjectData"]();
-    // this["returnedPerMonth/changeReturnedObjectData"]();
-  },
+
 };
 </script>

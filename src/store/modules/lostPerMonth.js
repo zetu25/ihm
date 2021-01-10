@@ -36,16 +36,9 @@ const getters = {
 
 const mutations = {
 
-    setLoaded(state, loaded) {
-        state.loaded = loaded;
-    }
 }
 
 const actions = {
-
-    setLoaded({ commit }) {
-        commit("setLoaded", true);
-    }
 
 }
 

@@ -1,12 +1,12 @@
 import axios from 'axios';
-import hexToRgba from 'hex-to-rgba';
-import colorGradient from "../colors";
+// import hexToRgba from 'hex-to-rgba';
+// import colorGradient from "../colors";
 
 
 
 const state = () => ({
+    loaded: false,
     doughnutReturnedObjects: {
-        type: 'doughnut',
         data: {
             // Nom des gares
             labels: [],
@@ -21,7 +21,7 @@ const state = () => ({
             responsive: true,
             aspectRatio: 2,
             title: {
-                text: "",
+                text: "Objets trouvés et restitués selon la gare en ",
                 display: true,
 
             },
@@ -36,7 +36,11 @@ const state = () => ({
 })
 
 // getters
-const getters = { getReturnedObjectData: state => state.doughnutReturnedObjects}
+const getters = {
+    getReturnedObjectData: state => state.doughnutReturnedObjects.data,
+    getOptions: state => state.doughnutReturnedObjects.options,
+    getLoaded: state => state.loaded
+}
 
 // actions
 const actions = {
@@ -64,19 +68,19 @@ const actions = {
                 console.log(error);
             });
         commit("changeReturnedObjectData", newData)
-
-    }
+    },
 }
 
 // mutations
 const mutations = {
-    changeReturnedObjectData(state, newData) {
-        state.doughnutReturnedObjects.data.datasets[0].data = newData[0];
-        state.doughnutReturnedObjects.data.labels = newData[1];
-        state.doughnutReturnedObjects.options.title.text = "Objets trouvés et restitués selon la gare en " + this.state.year;
-        colorGradient.setMidpoint(newData[0].length);
-        state.doughnutReturnedObjects.data.datasets[0].backgroundColor = colorGradient.getArray().map(color => hexToRgba(color));
-    }
+    // changeReturnedObjectData(state, newData) {
+    //     state.doughnutReturnedObjects.data.datasets[0].data = newData[0];
+    //     state.doughnutReturnedObjects.data.labels = newData[1];
+    //     state.doughnutReturnedObjects.options.title.text = "Objets trouvés et restitués selon la gare en " + this.state.year;
+    //     colorGradient.setMidpoint(newData[0].length);
+    //     state.doughnutReturnedObjects.data.datasets[0].backgroundColor = colorGradient.getArray().map(color => hexToRgba(color));
+    // },
+
 }
 
 const returnedObject = {

@@ -11,7 +11,7 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import axios from "axios";
-import LineChart from "./Chart.vue";
+import LineChart from "./LineChart.vue";
 
 export default {
   name: "LineChartContainer",
@@ -46,13 +46,14 @@ export default {
     };
   },
   methods: {
-    ...mapActions("returnedPerMonth", ["setLoaded"]),
+    ...mapActions(["setLoaded"]),
   },
   computed: {
-    ...mapGetters("returnedPerMonth", ["getOptions", "getLoaded"]),
+    ...mapGetters("returnedPerMonth", ["getOptions"]),
+    ...mapGetters(["getYear","getLoaded"]),
     setTitle() {
       let options = this.getOptions;
-      options.title.text = options.title.text + this.$store.state.year;
+      options.title.text = options.title.text + this.getYear;
       return options;
     },
   },
@@ -62,12 +63,12 @@ export default {
         "&q=&rows=0&sort=date&facet=gc_obo_date_heure_restitution_c" +
         "&apikey=2463d285a96d2c6c1739896874dbfec0b643d9ad37b51a5feda5b90a" +
         "&refine.gc_obo_date_heure_restitution_c=" +
-        this.$store.state.year
+        this.getYear
     );
     response.data.facet_groups[0].facets[0].facets.forEach((element) => {
       this.chartdata.datasets[0].data.push(element.count);
     });
-    this.setLoaded();
+    
   },
 };
 </script>
