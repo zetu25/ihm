@@ -33,7 +33,6 @@ export default {
       "&rows=10000&sort=date&facet=date&facet=gc_obo_gare_origine_r_name&facet=gc_obo_type_c&refine.date=" +
         this.year
     );
-    console.log(response.data);
 
     response.data.records.forEach((element) => {
       let data = {};
