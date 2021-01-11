@@ -22,6 +22,7 @@ export default new Vuex.Store({
     },
     state: {
         year: "2020",
+        loaded: false,
     },
     getters: {
         getYear: state => state.year,

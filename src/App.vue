@@ -1,4 +1,4 @@
-<template>
+<template >
   <v-app>
     <v-app-bar app color="#003B93" dark>
       <img
@@ -113,7 +113,9 @@ export default {
     ReturnedBarChart,
     ReturnedBoard,
   },
+
 };
+
 </script>
 <style >
 .main {

@@ -20,7 +20,7 @@ const state = () => ({
         options: {
             responsive: true,
             title: {
-                text: "Objets perdus en ",
+                text: "Répartition des objets perdus par type en ",
                 display: true
             },
             legend: {

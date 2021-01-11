@@ -21,7 +21,7 @@ const state = () => ({
             responsive: true,
             aspectRatio: 2,
             title: {
-                text: "Objets trouvés et restitués selon la gare en ",
+                text: "Répartition des objets trouvés et restitués par type en ",
                 display: true,
 
             },
