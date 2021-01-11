@@ -4,9 +4,9 @@
 
 Cette application présente les données d'objets déclarés comme perdus et restitués de la base de donnée ouverte de la sncf (https://data.sncf.com/explore/dataset/objets-trouves-gares/table/?sort=date et https://data.sncf.com/explore/dataset/objets-trouves-restitution/table/?sort=date).
 
-Nous utilisons pour cela le framework front Vue.js ainsi que la bibliothèque graphique Chart.js pour mettre en place les différentes visualisations. Le plugin Vuetify est également utilisé pour gérer le positionnement des différents éléments visuels.
+Nous utilisons pour cela le framework front [Vue.js](https://vuejs.org/) (version 2) ainsi que la bibliothèque graphique [Chart.js](https://www.chartjs.org/) pour mettre en place les différentes visualisations. Le plugin [Vuetify](https://vuetifyjs.com/en/) est également utilisé pour gérer le positionnement des différents éléments visuels.
 
-Les données sont récupérées grâce à des requêtes HTTP en utilisant la bibliothèque Axios.
+Les données sont récupérées grâce à des requêtes HTTP en utilisant la bibliothèque [Axios](https://github.com/axios/axios).
 
 ## Project setup
 Vous aurez besoin de Nodejs installé et accessible de façon global (incluant npm)
@@ -53,7 +53,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 2 histogrammes : pour chaque gares, la proportions d'objets perdus (premier histogramme) et trouvés (deuxième histogramme)
 
-### Utilisation de l'élément <v-data-table> de Vuetify
+### Utilisation de l'élément v-data-table de Vuetify
 
 #### Tableaux de données
 
