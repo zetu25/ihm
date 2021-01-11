@@ -75,7 +75,7 @@
         <h2>Objets trouvés et restitués</h2>
       </v-row>
       <v-row justify="center">
-        <v-col cols="8">
+        <v-col cols="10">
           <returned-board></returned-board>
         </v-col>
       </v-row>
@@ -83,7 +83,7 @@
         <h2>Déclaration de pertes</h2>
       </v-row>
       <v-row justify="center">
-        <v-col cols="8">
+        <v-col cols="10">
           <lost-board></lost-board>
         </v-col>
       </v-row>

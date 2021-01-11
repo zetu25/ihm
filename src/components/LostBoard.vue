@@ -26,18 +26,24 @@ export default {
       data: [],
     };
   },
-  methods: {},
+  methods: {
+    convertDate(date) {
+      var d = new Date(date);
+      var n = d.toLocaleString("fr", { timeZone: "UTC" });
+      return n;
+    },
+  },
   async created() {
     const response = await axios(
-      "https://data.sncf.com/api/records/1.0/search/?dataset=objets-trouves-gares&q="+
-      "&rows=10000&sort=date&facet=date&facet=gc_obo_gare_origine_r_name&facet=gc_obo_type_c&refine.date=" +
+      "https://data.sncf.com/api/records/1.0/search/?dataset=objets-trouves-gares&q=" +
+        "&rows=10000&sort=date&facet=date&facet=gc_obo_gare_origine_r_name&facet=gc_obo_type_c&refine.date=" +
         this.year
     );
 
     response.data.records.forEach((element) => {
       let data = {};
       let item = Object.create(data);
-      item.date = element.fields.date;
+      item.date = this.convertDate(element.fields.date);
       item.gc_obo_type_c = element.fields.gc_obo_type_c;
       item.gc_obo_nature_c = element.fields.gc_obo_nature_c;
       item.gc_obo_gare_origine_r_name =
